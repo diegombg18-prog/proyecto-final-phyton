@@ -1,5 +1,7 @@
 from django.contrib import admin
+from .models import Perfil
 
-from .models import PerfilUsuario
-
-admin.site.register(PerfilUsuario)
+@admin.register(Perfil)
+class PerfilAdmin(admin.ModelAdmin):
+    list_display = ('user', 'bio')
+    search_fields = ('user__username', 'bio')
